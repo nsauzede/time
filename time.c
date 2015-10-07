@@ -34,6 +34,11 @@ extern int errno;
 #include "resuse.h"
 #include "getpagesize.h"
 
+#define WALL_CLOCK
+#ifdef WALL_CLOCK
+#include <pthread.h>
+#endif
+
 void error PARAMS((int status, int errnum, char *message, ...));
 
 static void usage PARAMS((FILE *, int));
@@ -591,6 +596,25 @@ getargs (argc, argv)
   return (const char **) &argv[optind];
 }
 
+#ifdef WALL_CLOCK
+void *wall_clock( void *arg)
+{
+  time_t t0 = time( 0);
+  while (1)
+  {
+    sleep( 1);
+    time_t t1 = time( 0);
+    int delta = t1 - t0;
+    printf( 
+  //"0.746u 0.470s 2:06.34 0.9%      0+0k 6928+8io 2pf+0w"
+  //"0.13user 0.09system 0:28.89elapsed 0%CPU (0avgtext+0avgdata 76048maxresident)k"
+    "                                                                              (%d)\r", delta);
+    fflush( stdout);
+  }
+  return 0;
+}
+#endif
+
 /* Run command CMD and return statistics on it.
    Put the statistics in *RESP.  */
 
@@ -601,6 +625,11 @@ run_command (cmd, resp)
 {
   pid_t pid;			/* Pid of child.  */
   sighandler interrupt_signal, quit_signal;
+
+#ifdef WALL_CLOCK
+  pthread_t ptid;
+  pthread_create( &ptid, 0, wall_clock, 0);
+#endif
 
   resuse_start (resp);
 
