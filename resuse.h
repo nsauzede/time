@@ -19,7 +19,7 @@
 #ifndef _RESUSE_H
 #define _RESUSE_H 1
 
-#if HAVE_TIMEVAL
+#ifdef HAVE_TIMEVAL
 # include <sys/time.h>
 #else
 /* High resolution clock structure.  */

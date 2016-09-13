@@ -20,6 +20,10 @@
    arnej@imf.unit.no (Arne Henrik Juul)
    and pinard@iro.umontreal.ca (Francois Pinard).  */
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "wait.h"
 #include "port.h"
 

@@ -21,6 +21,10 @@
 
 extern const char *version_string;
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include "wait.h"
 #include <stdio.h>
 #include <sys/param.h>		/* For getpagesize, maybe.  */
