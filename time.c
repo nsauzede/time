@@ -605,13 +605,13 @@ void *wall_clock( void *arg)
     sleep( 1);
     time_t t1 = time( 0);
     int delta = t1 - t0;
-    printf( 
+    fprintf( stderr,
   //"0.746u 0.470s 2:06.34 0.9%      0+0k 6928+8io 2pf+0w"
   //"0.13user 0.09system 0:28.89elapsed 0%CPU (0avgtext+0avgdata 76048maxresident)k"
 //  "                                                                              (%d)\r", delta);
     "(%d)\r", delta);
 //  "(%d)\n", delta);
-    fflush( stdout);
+    fflush( stderr);
   }
   return 0;
 }

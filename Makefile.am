@@ -4,6 +4,8 @@ time_SOURCES = time.c getopt.c getopt1.c error.c resuse.c version.c \
 	getopt.h getpagesize.h resuse.h port.h wait.h
 EXTRA_DIST = texinfo.tex
 
+AM_CFLAGS=-pthread
+
 DISTCLEANFILES = stamp-v version.c
 version.c: stamp-v
 stamp-v: Makefile
