@@ -25,6 +25,10 @@ extern const char *version_string;
 #include <config.h>
 #endif
 
+#ifdef _WIN32
+#define _POSIX
+#endif
+
 #include "wait.h"
 #include <stdio.h>
 #include <sys/param.h>		/* For getpagesize, maybe.  */

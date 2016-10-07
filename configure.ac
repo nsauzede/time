@@ -42,7 +42,7 @@ AC_FUNC_ERROR_AT_LINE
 AC_FUNC_FORK
 AC_FUNC_MALLOC
 AC_FUNC_WAIT3
-AC_CHECK_FUNCS([getpagesize gettimeofday memset strerror])
+AC_CHECK_FUNCS([gettimeofday memset strerror])
 
 AC_MSG_CHECKING(for getpagesize)
 AC_TRY_LINK([#include <sys/param.h>],

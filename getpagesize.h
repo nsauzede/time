@@ -1,5 +1,9 @@
 /* Emulate getpagesize on systems that lack it.  */
 
+#ifdef _WIN32
+extern int getpagesize();
+#endif
+
 #ifndef HAVE_GETPAGESIZE
 
 #ifdef VMS
